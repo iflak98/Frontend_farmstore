@@ -1,3 +1,4 @@
+import { Credentials } from "./credential";
 import { Item } from "./item";
 
 export class Farmer {
@@ -6,8 +7,9 @@ export class Farmer {
     farmerName:string = '';
     farmerMobile:string = '';
     farmerLocation:string = '';
-    credential:Credential = new Credential();
+    credential:Credentials= new Credentials();
     
-    constructor() {}
+    constructor(){}
+        
 
 }

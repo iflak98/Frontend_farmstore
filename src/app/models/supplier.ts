@@ -1,3 +1,4 @@
+import { Credentials } from "./credential";
 import { Orders } from "./orders";
 
 export class Supplier {
@@ -7,7 +8,7 @@ export class Supplier {
     supplierMobile:string = '';
     supplierLocation:string = '';
     orders:Array<Orders> = [];
-    credential:Credential = new Credential();
+    credential:Credentials = new Credentials();
 
     constructor() {}
 

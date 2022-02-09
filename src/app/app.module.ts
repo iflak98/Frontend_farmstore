@@ -7,6 +7,11 @@ import { SupplierComponent } from './components/supplier/supplier.component';
 import { ItemComponent } from './components/item/item.component';
 import { FarmerComponent } from './components/farmer/farmer.component';
 import { CredentialComponent } from './components/credential/credential.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -15,10 +20,14 @@ import { CredentialComponent } from './components/credential/credential.componen
     SupplierComponent,
     ItemComponent,
     FarmerComponent,
-    CredentialComponent
+    CredentialComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
