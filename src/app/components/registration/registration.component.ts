@@ -1,78 +1,79 @@
 import { Component, OnInit } from '@angular/core';
-import { UserType } from 'src/app/models/userType';
-import { RegistrationService } from 'src/app/services/registration.service';
 import { Router } from "@angular/router";
-import { Orders } from 'src/app/models/orders';
-import { Farmer } from 'src/app/models/farmer';
-import { Supplier } from 'src/app/models/supplier';
-
+import { RegistrationService } from 'app/services/registration.service';
+import { UserType } from 'app/models/userType';
+import { Orders } from 'app/models/orders';
+import { Farmer } from 'app/models/farmer';
+import { Supplier } from 'app/models/supplier';
+import { HttpErrorResponse } from '@angular/common/http';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  
-farmer: Farmer = new Farmer();
-supplier: Supplier = new Supplier();
-isFarmer: boolean = true;
 
-  addFarmerData = {
-    farmerId : 0,
-    farmerName : '',
-    farmerMobile : '',
-    farmerLocation : '',
-    credential :{
-      userName : '',
-      password : '',
-      Usertype : UserType.FARMER
-    }
-  }
-
-    addSupplierData = {
-      supplierId : 0,
-      supplierName : '',
-      supplierMobile : '',
-      supplierLocation : '',
-      orders:Array<Orders>(),
-      credential :{
-        userName : '',
-        password : '',
-        Usertype : UserType.SUPPLIER
-      }
-    
-    }
+  farmer: Farmer = new Farmer();
+  supplier: Supplier = new Supplier();
+  isFarmer: boolean = true;
+  errorResponse: string='';
+  successResponse: string='';
+  validDetails = false;
 
   constructor(private registrationService: RegistrationService,
     private router: Router) { }
 
   ngOnInit(): void {
   }
-  registerFarmer(){
+  registerFarmer() {
+    // console.log(this.farmer);
+    this.farmer.credential.userType = UserType.FARMER;
+    this.registrationService.registerFarmer(this.farmer).subscribe((response) => {
+      this.successResponse = response.msg;
+      this.validDetails = true;
+      Swal.fire('Registered successfully!','','success');
+      console.log(this.successResponse);
+      this.router.navigate(['']);
+    },
+      (err) => {
+        this.validDetails=false;
+        this.errorResponse = err.error.msg;
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: this.errorResponse
+        })
+        console.log(this.errorResponse);
+      })
+  }
 
-    
-    console.log(this.addFarmerData);
-    this.registrationService.registerFarmer(this.addFarmerData).subscribe((response) => {
-      console.log(response);
-      
-    })
-    this.router.navigate(['']);
-    }
+  setFarmer() {
+    this.isFarmer = true;
+  }
+  setSupplier() {
+    this.isFarmer = false;
+  }
 
-    setFarmer() {
-      this.isFarmer = true;
-    }
-    setSupplier() {
-      this.isFarmer = false;
-    }
-
-    registerSupplier() {
-    console.log(this.addSupplierData);
-    this.registrationService.registerSupplier(this.addSupplierData).subscribe((response) => {
-      console.log(response);
-      
-    })
-    this.router.navigate(['']);
+  registerSupplier() {
+    console.log(this.supplier);
+    this.registrationService.registerSupplier(this.supplier).subscribe((response) => {
+      this.successResponse = response.msg;
+      this.validDetails = true;
+      Swal.fire('Registered successfully!','','success');
+      console.log(this.successResponse);
+      this.router.navigate(['']);
+    },
+      (err) => {
+        this.validDetails=false;
+        this.errorResponse = err.error.msg;
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: this.errorResponse
+        })
+        console.log(this.errorResponse);
+      })
   }
 
 }

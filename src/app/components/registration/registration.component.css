@@ -14,6 +14,46 @@
 
 }
 
+.nav-link{
+  padding: 6px 15px;
+}
+
+/* div {
+  margin-bottom: 10px;
+}
+label {
+  display:inline;
+  width: 55px;
+  text-align: right;
+}​ */
+
+body{
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.tab-content form .user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+form .user-details .form-group{
+  margin: 20px 0 12px 0;
+}
+
+form .btn{
+  height: 45px;
+  margin: 45px 0;
+  width: 100%;
+}
+
+form .button{
+  width: 100%;
+}
 
 
 

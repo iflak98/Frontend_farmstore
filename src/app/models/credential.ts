@@ -4,9 +4,10 @@ export class Credentials {
     
     userName:string = '';
     password:string = '';
-    Usertype:UserType = UserType.SUPPLIER;
+    userType:UserType = UserType.SUPPLIER;
 
     constructor() {
        
     }
+
 }

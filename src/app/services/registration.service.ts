@@ -13,11 +13,11 @@ export class RegistrationService {
   constructor(private _http : HttpClient ) { }
 
   public registerFarmer(farmer : Farmer):Observable<any>{
-    return this._http.post<any>("http://localhost:8083/registerfarmer",farmer)
+    return this._http.post("http://localhost:8083/register/farmer",farmer);
   }
 
   public registerSupplier(supplier : Supplier):Observable<any>{
-    return this._http.post<any>("http://localhost:8083/registersupplier",supplier)
+    return this._http.post("http://localhost:8083/register/supplier",supplier);
   }
 
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Credentials } from 'app/models/credential';
+import { Farmer } from 'app/models/farmer';
 
 @Component({
   selector: 'app-farmer',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FarmerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+   
   }
+  
+  
 
 }

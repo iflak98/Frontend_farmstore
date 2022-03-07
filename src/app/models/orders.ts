@@ -1,4 +1,5 @@
 import { Item } from "./item";
+import { ItemsOrdered } from "./items-ordered";
 import { Supplier } from "./supplier";
 
 export class Orders {
@@ -7,9 +8,9 @@ export class Orders {
     quantity:number = 0;
     price:number = 0;
     orderDate:Date = new Date();
-    items:Array<Item> = [];
-    supplier:Supplier = new Supplier();
-    deleted:number = 0;
+    items:ItemsOrdered[] = [];
+    supplier:Supplier= new Supplier() ;
+    
 
     constructor() {}
 
